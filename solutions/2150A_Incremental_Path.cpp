@@ -78,14 +78,15 @@ ll getRandomNumber(ll l, ll r) {return uniform_int_distribution<ll>(l, r)(rng);}
  
 void solve() {
     int n,m;
-    string s;
- 
     cin>>n>>m;
+    
+    string s;
     cin>>s;
  
     set<int> output;
     for(int i=0 ; i<m ; i++){
-        int pos;cin>>pos;
+        int pos;
+        cin>>pos;
         output.insert(pos);
     }
  
@@ -101,8 +102,7 @@ void solve() {
     }
     output.insert(curr);
  
-    for(int i=1 ; i<n ; i++){
- 
+    for(int i=1;  i<n ; i++){
         if(s[i-1]=='B'){
             curr++;
             while(output.find(curr)!=output.end()){
