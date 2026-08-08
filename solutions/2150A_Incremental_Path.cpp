@@ -82,15 +82,14 @@ void solve() {
  
     cin>>n>>m;
     cin>>s;
+ 
     set<int> output;
-    for(int i=0; i<m ; i++){
-        int pos;
-        cin>>pos;
+    for(int i=0 ; i<m ; i++){
+        int pos;cin>>pos;
         output.insert(pos);
     }
  
     int curr=1;
-    // making the first move . 
     if(s[0]=='A'){
         curr++;
     }
@@ -103,12 +102,14 @@ void solve() {
     output.insert(curr);
  
     for(int i=1 ; i<n ; i++){
+ 
         if(s[i-1]=='B'){
             curr++;
             while(output.find(curr)!=output.end()){
                 curr++;
             }
         }
+ 
         if(s[i]=='A'){
             curr++;
         }
@@ -126,7 +127,6 @@ void solve() {
         cout<<ele<<" ";
     }
     cout<<"\n";
- 
 }
  
 int32_t main() {
