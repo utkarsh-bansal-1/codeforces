@@ -77,20 +77,25 @@ ll phin(ll n) {ll number = n; if (n % 2 == 0) {number /= 2; while (n % 2 == 0) n
 ll getRandomNumber(ll l, ll r) {return uniform_int_distribution<ll>(l, r)(rng);} 
  
 void solve() {
-    int n,rk,vk,rd,vd;cin>>n>>rk>>vk>>rd>>vd;
+    int n,rk,vk,rd,vd;
+    cin>>n>>rk>>vk>>rd>>vd;
+ 
     int ans=0;
+    
     if(rk<rd){
         ans=rd;
     }
     else if(rk>rd){
         ans=n-rd;
     }
+ 
     if(vk<vd){
-        ans=max(vd , ans); 
+        ans=max(ans , vd);
     }
     else if(vk>vd){
-        ans=max(n-vd , ans);
+        ans=max(ans , n-vd);
     }
+ 
     cout<<ans<<"\n";
 }
  
