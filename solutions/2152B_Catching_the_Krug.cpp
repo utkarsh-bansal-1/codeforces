@@ -8,7 +8,7 @@ using namespace std;
 using namespace chrono;
 using namespace __gnu_pbds;
  
-// repeating solution ki aisi ki taisi 
+ 
  
 #define int long long
 #define fastio() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
@@ -81,18 +81,18 @@ void solve() {
     cin>>n>>xk>>yk>>xd>>yd;
  
     int ans=0;
-    if(xk<xd){
-        ans=xd;
-    }
-    else if(xk>xd){
+    if(xk>xd){
         ans=n-xd;
     }
- 
-    if(yk<yd){
-        ans=max(ans , yd);
+    else if(xk<xd){
+        ans=xd;
     }
-    else if(yk>yd){
+ 
+    if(yk>yd){
         ans=max(ans , n-yd);
+    }
+    else if(yk<yd){
+        ans=max(ans , yd);
     }
  
     cout<<ans<<"\n";
