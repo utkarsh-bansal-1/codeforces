@@ -77,18 +77,15 @@ ll phin(ll n) {ll number = n; if (n % 2 == 0) {number /= 2; while (n % 2 == 0) n
 ll getRandomNumber(ll l, ll r) {return uniform_int_distribution<ll>(l, r)(rng);} 
  
 void solve() {
-    int n,m;
-    cin>>n>>m;
- 
+    int n,m;cin>>n>>m;
     string s;cin>>s;
  
     set<int> output;
- 
     for(int i=0 ; i<m ; i++){
-        int pos;
-        cin>>pos;
-        output.insert(pos);
+        int x;cin>>x;
+        output.insert(x);    
     }
+ 
  
     int curr=1;
     if(s[0]=='A'){
@@ -119,14 +116,14 @@ void solve() {
                 curr++;
             }
         }
- 
         output.insert(curr);
     }
+ 
     cout<<output.size()<<"\n";
     for(auto ele : output){
         cout<<ele<<" ";
-    }
-    cout<<"\n";
+    }cout<<"\n";
+ 
 }
  
 int32_t main() {
