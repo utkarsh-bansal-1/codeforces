@@ -80,22 +80,22 @@ void solve() {
     int n;cin>>n;
  
     int size=0;
-    for(int i=30 ; i>=0 ; i--){
-        if(((n>>i))!=0){
+    for(int i=31 ; i>=0 ; i--){
+        if((n>>i)!=0){
             size=i+1;
             break;
         }
     }
  
-    int y=0;
-    for(int i=0 ; i<=30 ; i++){
+    for(int i=0 ; i<=31 ; i++){
         if(((n>>i)&1)!=0){
-            y=i;
+            size+=i;
             break;
         }
     }
  
-    size+=y;
+ 
+    // main check 
     for(int i=0 ; i<size/2 ; i++){
         if(((n>>i)&1)!=((n>>(size-1-i))&1)){
             cout<<"NO\n";
@@ -103,8 +103,9 @@ void solve() {
         }
     }
  
+    // partial check
     if(size%2!=0){
-        if(((n>>(size/2))&1)!=0){
+        if(((n>>size/2)&1)!=0){
             cout<<"NO\n";
             return;
         }
