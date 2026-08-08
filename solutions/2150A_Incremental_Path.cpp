@@ -79,11 +79,11 @@ ll getRandomNumber(ll l, ll r) {return uniform_int_distribution<ll>(l, r)(rng);}
 void solve() {
     int n,m;
     cin>>n>>m;
-    
-    string s;
-    cin>>s;
+ 
+    string s;cin>>s;
  
     set<int> output;
+ 
     for(int i=0 ; i<m ; i++){
         int pos;
         cin>>pos;
@@ -102,7 +102,7 @@ void solve() {
     }
     output.insert(curr);
  
-    for(int i=1;  i<n ; i++){
+    for(int i=1 ; i<n ; i++){
         if(s[i-1]=='B'){
             curr++;
             while(output.find(curr)!=output.end()){
@@ -119,9 +119,9 @@ void solve() {
                 curr++;
             }
         }
+ 
         output.insert(curr);
     }
- 
     cout<<output.size()<<"\n";
     for(auto ele : output){
         cout<<ele<<" ";
