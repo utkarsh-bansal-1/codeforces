@@ -79,36 +79,32 @@ ll getRandomNumber(ll l, ll r) {return uniform_int_distribution<ll>(l, r)(rng);}
 void solve() {
     int n;cin>>n;
  
-    if(n==0){
-        cout<<"YES\n";
-        return;
-    }
- 
     int size=0;
-    for(int i=31 ; i>=0 ; i--){
-        if(((n>>i)&1)==1){
+    for(int i=30 ; i>=0 ; i--){
+        if(((n>>i))!=0){
             size=i+1;
+            break;
         }
     }
  
-    int trailingzeros=0;
-    for(int i=0 ; i<=31 ; i++){
-        if(((n>>i)&1)==1){
-            trailingzeros=i;
+    int y=0;
+    for(int i=0 ; i<=30 ; i++){
+        if(((n>>i)&1)!=0){
+            y=i;
+            break;
         }
     }
  
-    int actualsize=size+trailingzeros;
- 
-    for(int i=0 ; i<actualsize/2 ; i++){
-        if(((n>>i)&1)!=((n>>(actualsize-1-i))&1)){
+    size+=y;
+    for(int i=0 ; i<size/2 ; i++){
+        if(((n>>i)&1)!=((n>>(size-1-i))&1)){
             cout<<"NO\n";
             return;
         }
     }
  
-    if(actualsize%2!=0){
-        if(((n>>(actualsize/2))&1)!=0){
+    if(size%2!=0){
+        if(((n>>(size/2))&1)!=0){
             cout<<"NO\n";
             return;
         }
