@@ -78,37 +78,46 @@ ll getRandomNumber(ll l, ll r) {return uniform_int_distribution<ll>(l, r)(rng);}
  
 void solve() {
     int n;cin>>n;
+    // counting the number of bits n must have . 
+    // number of trailing zeros in n . 
  
-    int size=0;
-    for(int i=31 ; i>=0 ; i--){
-        if((n>>i)!=0){
+    if(n==0){
+        cout<<"YES\n";
+        return;
+    }
+ 
+    int y=0;
+    for(int i=0 ; i<=30 ; i++){
+        if((n&(1<<i))==0){
+            y++;
+        }
+        else{
+            break;
+        }
+    }
+ 
+    // length of n = org length and trailing zeros . 
+    int size;
+    for(int i=30 ; i>=0 ; i--){
+        if((n&(1<<i))!=0){
             size=i+1;
             break;
         }
     }
  
-    for(int i=0 ; i<=31 ; i++){
-        if(((n>>i)&1)!=0){
-            size+=i;
-            break;
-        }
-    }
- 
- 
-    // main check 
-    for(int i=0 ; i<size/2 ; i++){
-        if(((n>>i)&1)!=((n>>(size-1-i))&1)){
+    size+=y;
+    for(int i=0 ; i<(size+1)/2 ; i++){
+        if(((n>>i)&1)!=((n>>(size-i-1)&1))){
             cout<<"NO\n";
             return;
         }
     }
  
-    // partial check
-    if(size%2!=0){
-        if(((n>>size/2)&1)!=0){
-            cout<<"NO\n";
-            return;
-        }
+    if(size % 2 == 1){
+    if(n & (1 << (size/2))){
+        cout<<"NO\n";
+        return;
+    }
     }
  
     cout<<"YES\n";
